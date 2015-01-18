@@ -1,0 +1,162 @@
+<style>
+
+.page-heading h1 {
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 100%;
+	text-transform: uppercase;
+	color: #656D78;
+	margin: 0 0 10px 0;
+}
+
+
+
+.modal-header.no-border {
+	border-bottom: none;
+}
+
+.modal-header.no-border .modal-title {
+	color: white;
+}
+
+.bg-dark {
+	background-color: #434A54;
+	background-color: #3BAFDA;
+}
+
+.btn-default {
+	color: #333;
+	background-color: #F5F7FA;
+	border-color: #E6E9ED;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active,
+	.btn-default.active, .open .dropdown-toggle.btn-default {
+	color: #333;
+	background-color: #E6E9ED;
+	border-color: #E6E9ED;
+}
+
+.the-box {
+	padding: 15px;
+	margin-bottom: 30px;
+	background: #fff;
+	border: 1px solid #D5DAE0;
+	position: relative;
+	height: 95px;
+}
+
+.user-card-sm .media-object {
+	width: 60px;
+	height: 60px;
+}
+</style>
+
+
+
+<div ng-show="selected">Selection from a modal: {{ selected }}</div>
+{{title}}
+
+<div ng-init="showList = true">
+	<!--<div class="" style="background-color: red; height: 10000px; widows: 100%"></div>-->
+	<!--<div class="" ng-init="showList = true">-->
+	<div class="main-inner">
+
+
+
+		<div class="row" style="clear: both" ng-show="showList">
+			<div class="col-xs-12 col-lg-6">
+				<div class="the-box no-border">
+					<div class="media user-card-sm">
+						<div class="media-body">
+							<h4 class="media-heading" data-ng-bind="dashboard.cpu.title">
+							</h4>
+							<hr style="margin: 0.5rem">
+							<p>
+								<i class="fa fa-map-marker"></i> {{dashboard.cpu.core}} Core
+								Active<br /> <i class="fa fa-user"></i> {{dashboard.cpu.used}}
+								CPU-HR Used
+								<!--<br/> Till 17 okt-->
+								<!--<small class="text-danger"> {{dashboard.cpu.title}} </small>-->
+							</p>
+						</div>
+						<!--<div class="right-button">
+							<button class="btn btn-success"><i class="fa fa-envelope"></i></button>
+						</div><!-- /.right-button -->
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-lg-6">
+				<div class="the-box no-border">
+					<div class="media user-card-sm">
+						<div class="media-body">
+							<h4 class="media-heading" data-ng-bind="dashboard.cpu.title">
+							</h4>
+							<hr style="margin: 0.5rem">
+							<p>
+								<i class="fa fa-map-marker"></i> {{dashboard.disk.core}} Active
+								Active<br /> <i class="fa fa-user"></i> {{dashboard.disk.used}}
+								GB Used
+								<!--<br/> Till 17 okt-->
+								<!--<small class="text-danger"> {{dashboard.cpu.title}} </small>-->
+							</p>
+						</div>
+						<!--<div class="right-button">
+							<button class="btn btn-success"><i class="fa fa-envelope"></i></button>
+						</div><!-- /.right-button -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="col-sm-12 main">
+                
+                <div class="page-heading">
+					<span class="pull-left">
+						
+						<h3>Sumary ..</h3>
+					
+					</span> 
+					<span class="pull-right">
+						
+							<button class="btn btn-default" ng-click="sendData()">Send Data</button>
+						
+					</span>
+				</div>
+            </div>
+		
+		
+	<table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Instance Name / Tenant</th>
+			<th>Private IP</th>
+            <th>VCPUs</th>
+            <th>Disk Size</th>
+			<th>RAM</th>
+			<th>OS</th>
+			<th>Uptime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="server in servers">
+            <td>{{$index + 1}}</td>
+            <td>{{server.name}} / {{server.tenant}}</td>
+			<td>{{server.privateIp}}</td>
+            <td>{{server.cpuUsed}}</td>
+			<td>{{server.diskSize}}GB</td>
+            <td>{{server.ramSize}}GB</td>
+			<td>{{server.os}}</td>
+			<td>{{server.beginTime}} - {{server.endTime}}</td>
+          </tr>
+        </tbody>
+      </table>
+		<!--<div ng-controller="MyCtrl">
+        	<div class="gridStyle" ng-grid="gridOptions"></div>
+    	</div>-->
+	</div>
+
+</div>
+</div>
