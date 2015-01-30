@@ -95,8 +95,14 @@ musicManager.controller('ListCtrl', function($scope,$rootScope,$routeParams, $re
     // load data function
     $scope.getPagedDataAsync = function (pageSize, page) {
         var start = pageSize * (page - 1);
+        Song.query(function(data){
+        	console.log(data);
+        })
+        Song.queryPaging1(function(songs){
+        	console.log(songs);
+        })
         Song.queryPaging({start: start, max: pageSize}, function (songs) {
-            $scope.songs = songs;
+            $scope.songs = songs.content;
             $scope.gridOptions.selectedItems.length = 0;
             
             if (!$scope.$$phase) {
@@ -219,7 +225,7 @@ musicManager.controller('DetailCtrl', function($scope, $routeParams, $location, 
 
     $scope.update = function(song) {
         //song.$save();
-        song.$update();
+        song.$update({songId: song.id});
 
         dialog.close(song);
         $scope.$destroy();

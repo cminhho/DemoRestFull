@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tma.service.SongService;
 import com.tma.service.UserService;
 import com.tma.model.Song;
+import com.tma.model.User;
 
 @Controller
 @RequestMapping(value="/song", produces="application/json")
@@ -39,7 +40,7 @@ public class SongController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	@ResponseBody public Song getWithId(@RequestParam String id){
+	@ResponseBody public Song getWithId(@PathVariable String id){
 		return songService.findOne(id);
 	}
 
@@ -48,14 +49,12 @@ public class SongController {
 		songService.save(song);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT)
-	@ResponseBody public void updateSong(@PathVariable String id,Song song){
-		if(songService.findOne(id) != null){
-			songService.save(song);
-		}
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	@ResponseBody public void updateSong(@PathVariable String id, @RequestBody Song song){
+		songService.updateSong(id, song);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE)
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	@ResponseBody public void deleteSong(@PathVariable String id){
 		songService.delete(id);
 	}

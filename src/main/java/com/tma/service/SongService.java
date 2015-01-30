@@ -38,6 +38,13 @@ public class SongService implements SongServiceImpl{
 		return songDao.findAll();
 	}
 
+	@Override
+	public void updateSong(String id, Song song) {
+		if(songDao.findOne(id) != null){
+			songDao.save(song);
+		}
+	}
+	
 //	-----------------------------------------------
 	@Override
 	public Iterable<Song> findAll(Sort arg0) {

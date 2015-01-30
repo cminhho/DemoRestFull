@@ -17,5 +17,5 @@ public interface SongServiceImpl extends PagingAndSortingRepository<Song, String
 //	public Song getWithId(String id);
 //	public void addSong(Song song);
 //	public void deleteSong(String id);
-//	public void updateSong(String id, Song song);
+	public void updateSong(String id, Song song);
 }
