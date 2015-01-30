@@ -21,7 +21,8 @@
 
 <!-- 	<bean id="songService" class="com.tma.service.SongServiceImpl"> -->
 <!-- 	</bean> -->
-<bean id="userService" class="com.tma.service.UserService"></bean>
+	<bean id="userService" class="com.tma.service.UserService"></bean>
+	<bean id="songService" class="com.tma.service.SongService"></bean>
 
 	<mongo:repositories base-package="com.tma.dao">
 	</mongo:repositories>

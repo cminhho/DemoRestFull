@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.tma.model.User;
 
 @Repository
-public interface UserRepository extends MongoRepository<User, String>{
+public interface UserDao extends MongoRepository<User, String>{
 
 }

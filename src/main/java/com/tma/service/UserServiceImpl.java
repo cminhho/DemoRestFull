@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tma.model.User;
 
-public interface IUserService {
+public interface UserServiceImpl {
 	public List<User> getAll();
 	public User getWithId(String id);
 	public void addUser(User user);
